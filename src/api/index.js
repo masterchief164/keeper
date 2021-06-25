@@ -5,6 +5,5 @@ const api = axios.create({
 });
 
 export const createNote = payload=> api.post("/note",payload);
-export const updateNote = payload=> api.put("/note",payload);
 export const deleteNote = id=>api.delete("/note/"+id);
 export const getNotes = ()=>api.get("/note/");

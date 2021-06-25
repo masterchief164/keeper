@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
@@ -7,15 +7,18 @@ import * as api from "../api/index"
 
 function App() {
     const [notes, setNotes] = useState([]);
-    api.getNotes().then((notesArray) => setNotes(notesArray.data.data));
+    useEffect(()=> {
+        api.getNotes().then((notesArray) => setNotes(notesArray.data.data))
+    },[notes]);
+
 
     function addNote(newNote) {
-        api.createNote(newNote).then(() => api.getNotes().then((notesArray) => setNotes(notesArray.data.data)));
+        api.createNote(newNote);
 
     }
 
     function deleteNote(id) {
-        api.deleteNote(id).then(() => api.getNotes().then((notesArray) => setNotes(notesArray.data.data)));
+        api.deleteNote(id)
     }
 
     return (
