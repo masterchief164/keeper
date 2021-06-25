@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: 'http://localhost:3000/api',
+    baseURL: 'https://sleepy-journey-51279.herokuapp.com/api',
 });
 
 export const createNote = payload=> api.post("/note",payload);
